@@ -1,6 +1,7 @@
-from django.db.models import fields
-from plugin_example.models import Paciente, models
-class Patient_Form():
-    class Meta:
-        model = Paciente
-        fields = ['first_name', 'last_name', 'genero_otro', 'gender', 'fecha_nacimiento', 'country', 'weight', 'heigth']
+from django.forms import ModelForm
+from mezzanine_firestore.models import Patient
+
+class Patient_Form(ModelForm):
+     class Meta:
+        model = Patient
+        fields = ['firstName','lastName']

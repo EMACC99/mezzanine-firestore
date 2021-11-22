@@ -5,29 +5,43 @@ from setuptools import setup, find_packages
 
 from mezzanine_firestore import __version__ as version
 
-VERSION = '1.0'
-DESCRIPTION = 'Plugin for mezzanine'
-with open("README.md", "r", encoding="utf8") as f:
-    LONG_DESCRIPTION = f.read()
+install_requires = [
+    "mezzanine >= 4.0", 
+    #"django-type-of-works>=0.1",
+    #"django-registration-redux>=1",
+    #"django-countries>=3",
+]
 
-#setting up
-setup(
-    name = 'mezzanine_firestore',
-    version = VERSION,
-    author = "Eduardo Ceja",
-    description = DESCRIPTION,
-    # long_description = LONG_DESCRIPTION,
-    long_description_content_type = "text/markdown",
-    packages = find_packages(),
-    install_requires = ["django", "future", "django-countries", "mezzanine"],
-
-    license = "MIT",
-    keywords = ['python', 'mezzanine'],
-    clasifiers = [
-        "License :: MIT License",
-        "Operating System :: OS Independent",
-        "Programming Languaje :: Python :: 3.6",
-        ],
-    zip_safe = False,
-    python_requires = ">=3.6"
-)
+try:
+    setup(
+        name="plugin_firestore",
+        version=version,
+        author="Eduardo Ceja",
+        description="Connection to firestore.",
+        long_description=open("README.md").read(),
+        license="MIT",
+        #url="http://mezzanine.jupo.org/",
+        zip_safe=False,
+        include_package_data=True,
+        packages=find_packages(),
+        install_requires=install_requires,
+        entry_points="""
+            [console_scripts]
+        """,
+        classifiers=[
+            "Development Status :: 4 - Beta",
+            "Environment :: Web Environment",
+            "Framework :: Django",
+            "Intended Audience :: Developers",
+            "License :: OSI Approved :: BSD License",
+            "Operating System :: OS Independent",
+            "Programming Language :: Python",
+            "Topic :: Internet :: WWW/HTTP",
+            "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+            "Topic :: Internet :: WWW/HTTP :: WSGI",
+            "Topic :: Software Development :: Libraries :: "
+                                                "Application Frameworks",
+            "Topic :: Software Development :: Libraries :: Python Modules",
+        ],)
+except:
+    pass
